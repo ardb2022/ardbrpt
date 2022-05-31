@@ -1,0 +1,828 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3C9BA9B6-B9DA-4132-B967-E8295B428541}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RDLCReportServer</RootNamespace>
+    <AssemblyName>RDLCReportServer</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1427.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1427.0\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1427.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1427.0\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebDesign, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1427.0\lib\net40\Microsoft.ReportViewer.WebDesign.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1427.0\lib\net40\Microsoft.ReportViewer.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="Oracle.DataAccess, Version=4.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Rpt\Oracle.DataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="Oracle.ManagedDataAccess">
+      <HintPath>packages\Oracle.ManagedDataAccess.12.1.021\lib\net40\Oracle.ManagedDataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="Oracle.ManagedDataAccess.EntityFramework, Version=6.121.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
+      <HintPath>packages\Oracle.ManagedDataAccess.EntityFramework.12.1.021\lib\net45\Oracle.ManagedDataAccess.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="AspNet.ScriptManager.bootstrap">
+      <HintPath>packages\AspNet.ScriptManager.bootstrap.3.4.1\lib\net45\AspNet.ScriptManager.bootstrap.dll</HintPath>
+    </Reference>
+    <Reference Include="AspNet.ScriptManager.jQuery">
+      <HintPath>packages\AspNet.ScriptManager.jQuery.3.4.1\lib\net45\AspNet.ScriptManager.jQuery.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ScriptManager.MSAjax">
+      <HintPath>packages\Microsoft.AspNet.ScriptManager.MSAjax.5.0.0\lib\net45\Microsoft.ScriptManager.MSAjax.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ScriptManager.WebForms">
+      <HintPath>packages\Microsoft.AspNet.ScriptManager.WebForms.5.0.0\lib\net45\Microsoft.ScriptManager.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Web.Optimization.WebForms">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.Web.Optimization.WebForms.1.1.3\lib\net45\Microsoft.AspNet.Web.Optimization.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.FriendlyUrls">
+      <HintPath>packages\Microsoft.AspNet.FriendlyUrls.Core.1.0.2\lib\net45\Microsoft.AspNet.FriendlyUrls.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="WebForm\Deposit\activestandinginstr.aspx" />
+    <Content Include="WebForm\Deposit\asfixed.aspx" />
+    <Content Include="WebForm\Deposit\asrecurring.aspx" />
+    <Content Include="WebForm\Deposit\assavings.aspx" />
+    <Content Include="WebForm\Deposit\depositsubcashbook.aspx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="WebForm\Deposit\dlfixed.aspx" />
+    <Content Include="WebForm\Deposit\dlrecurring.aspx" />
+    <Content Include="WebForm\Deposit\dlsavings.aspx" />
+    <Content Include="WebForm\Deposit\nearmatdetails.aspx" />
+    <Content Include="WebForm\Deposit\neftinward.aspx" />
+    <Content Include="WebForm\Deposit\neftoutwardpay.aspx" />
+    <Content Include="WebForm\Deposit\opencloseregister.aspx" />
+    <Content Include="WebForm\Deposit\passbookprint.aspx" />
+    <Content Include="WebForm\Deposit\standinginstrexe.aspx" />
+    <Content Include="WebForm\Fin\balancesheet.aspx" />
+    <Content Include="WebForm\Fin\cashcumtrail.aspx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="WebForm\Fin\DayBookViewer.aspx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="ReportDataSet\RDLCReportdataset.xsc">
+      <DependentUpon>RDLCReportdataset.xsd</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="App_Data\BankConfig.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="App_Data\BranchConfig.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="WebForm\Fin\cashaccount.aspx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="WebForm\Fin\dayscrollbook.aspx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="WebForm\Fin\generalledger.aspx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="WebForm\Fin\generalledgerdtls.aspx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="WebForm\Fin\profitandloss.aspx" />
+    <Content Include="WebForm\Fin\tradingac.aspx" />
+    <Content Include="WebForm\Fin\trialbalance.aspx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="WebForm\Loan\defaultlistloan.aspx" />
+    <Content Include="WebForm\Loan\detailedlistforloan.aspx" />
+    <Content Include="WebForm\Loan\loandisbursement.aspx" />
+    <Content Include="WebForm\Loan\loanrecoveryregister.aspx" />
+    <Content Include="WebForm\Loan\loanstatement.aspx" />
+    <Content Include="WebForm\Loan\loansubcashbook.aspx" />
+    <Content Include="WebForm\Loan\TestWebForm.aspx" />
+    <Content Include="WebForm\Loan\XYZWebForm.aspx" />
+    <Content Include="WebForm\UCIC\memberdetails.aspx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="WebForm\UCIC\NetWorth.aspx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ReportDataSet\RDLCDepositdataset.xsc">
+      <DependentUpon>RDLCDepositdataset.xsd</DependentUpon>
+    </Content>
+    <None Include="ReportDataSet\RDLCDepositdataset.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>RDLCDepositdataset.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="ReportDataSet\RDLCDepositdataset.xss">
+      <DependentUpon>RDLCDepositdataset.xsd</DependentUpon>
+    </Content>
+    <Content Include="ReportDataSet\RDLCLoanDataSet.xsc">
+      <DependentUpon>RDLCLoanDataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="ReportDataSet\RDLCLoanDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>RDLCLoanDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="ReportDataSet\RDLCLoanDataSet.xss">
+      <DependentUpon>RDLCLoanDataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="ReportDataSet\RDLCReportdataset.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>RDLCReportdataset.Designer.cs</LastGenOutput>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Content Include="ReportDataSet\RDLCReportdataset.xss">
+      <DependentUpon>RDLCReportdataset.xsd</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\WebForms\DetailsView.js" />
+    <Content Include="Scripts\WebForms\Focus.js" />
+    <Content Include="Scripts\WebForms\GridView.js" />
+    <Content Include="Scripts\WebForms\Menu.js" />
+    <Content Include="Scripts\WebForms\MenuStandards.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjax.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxApplicationServices.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxComponentModel.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxCore.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxGlobalization.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxHistory.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxNetwork.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxSerialization.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxTimer.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxWebForms.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxWebServices.js" />
+    <Content Include="Scripts\WebForms\SmartNav.js" />
+    <Content Include="Scripts\WebForms\TreeView.js" />
+    <Content Include="Scripts\WebForms\WebForms.js" />
+    <Content Include="Scripts\WebForms\WebParts.js" />
+    <Content Include="Scripts\WebForms\WebUIValidation.js" />
+    <Content Include="Site.Master" />
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ViewSwitcher.ascx" />
+    <Content Include="Web.config" />
+    <Content Include="Bundle.config" />
+    <Content Include="Site.Mobile.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="DL\Deposit\DepositDL.cs" />
+    <Compile Include="DL\Finance\TradingAc.cs" />
+    <Compile Include="DL\Finance\ProfitandLoss.cs" />
+    <Compile Include="DL\Finance\BalanceSheet.cs" />
+    <Compile Include="DL\Loan\LoanDL.cs" />
+    <Compile Include="DL\UCIC\CustomerDL.cs" />
+    <Compile Include="LL\Deposit\DepositLL.cs" />
+    <Compile Include="LL\Loan\LoanLL.cs" />
+    <Compile Include="LL\UCIC\CustomerLL.cs" />
+    <Compile Include="Model\BankConfig.cs" />
+    <Compile Include="Model\gm_loan_trans.cs" />
+    <Compile Include="Model\mm_acc_type.cs" />
+    <Compile Include="Model\mm_constitution.cs" />
+    <Compile Include="Model\mm_category.cs" />
+    <Compile Include="Model\neft_inward.cs" />
+    <Compile Include="Model\passbook_print.cs" />
+    <Compile Include="Model\active_standing_instr.cs" />
+    <Compile Include="Model\standing_instr_exe.cs" />
+    <Compile Include="Model\td_outward_payment.cs" />
+    <Compile Include="Model\tt_acc_stmt.cs" />
+    <Compile Include="Model\tt_trading_account.cs" />
+    <Compile Include="Model\tt_pl_book.cs" />
+    <Compile Include="Model\tt_detailed_list_loan.cs" />
+    <Compile Include="Model\tt_balance_sheet.cs" />
+    <Compile Include="Model\tt_loan_sub_cash_book.cs" />
+    <Compile Include="Model\tt_opn_cls_register.cs" />
+    <Compile Include="Model\tt_sbca_dtl_list.cs" />
+    <Compile Include="Model\tm_loan_all.cs" />
+    <Compile Include="Model\tm_deposit.cs" />
+    <Compile Include="Model\mm_customer.cs" />
+    <Compile Include="Model\m_acc_master.cs" />
+    <Compile Include="Model\tt_dep_sub_cash_book.cs" />
+    <Compile Include="ReportDataSet\RDLCDepositdataset.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RDLCDepositdataset.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ReportDataSet\RDLCLoanDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RDLCLoanDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm\Deposit\activestandinginstr.aspx.cs">
+      <DependentUpon>activestandinginstr.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm\Deposit\activestandinginstr.aspx.designer.cs">
+      <DependentUpon>activestandinginstr.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm\Deposit\asfixed.aspx.cs">
+      <DependentUpon>asfixed.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm\Deposit\asfixed.aspx.designer.cs">
+      <DependentUpon>asfixed.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm\Deposit\asrecurring.aspx.cs">
+      <DependentUpon>asrecurring.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm\Deposit\asrecurring.aspx.designer.cs">
+      <DependentUpon>asrecurring.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm\Deposit\assavings.aspx.cs">
+      <DependentUpon>assavings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm\Deposit\assavings.aspx.designer.cs">
+      <DependentUpon>assavings.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm\Deposit\depositsubcashbook.aspx.cs">
+      <DependentUpon>depositsubcashbook.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="WebForm\Deposit\depositsubcashbook.aspx.designer.cs">
+      <DependentUpon>depositsubcashbook.aspx</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="WebForm\Deposit\dlfixed.aspx.cs">
+      <DependentUpon>dlfixed.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm\Deposit\dlfixed.aspx.designer.cs">
+      <DependentUpon>dlfixed.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm\Deposit\dlrecurring.aspx.cs">
+      <DependentUpon>dlrecurring.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm\Deposit\dlrecurring.aspx.designer.cs">
+      <DependentUpon>dlrecurring.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm\Deposit\dlsavings.aspx.cs">
+      <DependentUpon>dlsavings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm\Deposit\dlsavings.aspx.designer.cs">
+      <DependentUpon>dlsavings.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm\Deposit\nearmatdetails.aspx.cs">
+      <DependentUpon>nearmatdetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm\Deposit\nearmatdetails.aspx.designer.cs">
+      <DependentUpon>nearmatdetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm\Deposit\neftinward.aspx.cs">
+      <DependentUpon>neftinward.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm\Deposit\neftinward.aspx.designer.cs">
+      <DependentUpon>neftinward.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm\Deposit\neftoutwardpay.aspx.cs">
+      <DependentUpon>neftoutwardpay.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm\Deposit\neftoutwardpay.aspx.designer.cs">
+      <DependentUpon>neftoutwardpay.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm\Deposit\opencloseregister.aspx.cs">
+      <DependentUpon>opencloseregister.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm\Deposit\opencloseregister.aspx.designer.cs">
+      <DependentUpon>opencloseregister.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm\Deposit\passbookprint.aspx.cs">
+      <DependentUpon>passbookprint.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm\Deposit\passbookprint.aspx.designer.cs">
+      <DependentUpon>passbookprint.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm\Deposit\standinginstrexe.aspx.cs">
+      <DependentUpon>standinginstrexe.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm\Deposit\standinginstrexe.aspx.designer.cs">
+      <DependentUpon>standinginstrexe.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm\Fin\balancesheet.aspx.cs">
+      <DependentUpon>balancesheet.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm\Fin\balancesheet.aspx.designer.cs">
+      <DependentUpon>balancesheet.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm\Fin\cashcumtrail.aspx.cs">
+      <DependentUpon>cashcumtrail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="WebForm\Fin\cashcumtrail.aspx.designer.cs">
+      <DependentUpon>cashcumtrail.aspx</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="WebForm\Fin\DayBookViewer.aspx.cs">
+      <DependentUpon>DayBookViewer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="WebForm\Fin\DayBookViewer.aspx.designer.cs">
+      <DependentUpon>DayBookViewer.aspx</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="DL\Finance\CashCumTrialDL.cs" />
+    <Compile Include="DL\Finance\DailyCashBookDL.cs" />
+    <Compile Include="DL\Finance\DayScrollBookDL.cs" />
+    <Compile Include="DL\Finance\RptGeneralLedgerTransactionDtlsDL.cs" />
+    <Compile Include="DL\Finance\TrialBalanceDL.cs" />
+    <Compile Include="DL\Finance\VoucherDL.cs" />
+    <Compile Include="DL\Finance\VoucherPrintDL.cs" />
+    <Compile Include="DL\Master\BankConfigMstDL.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="LL\Finance\FinanceReportLL.cs" />
+    <Compile Include="LL\Finance\VoucherLL.cs" />
+    <Compile Include="LL\Master\BankConfigMstLL.cs" />
+    <Compile Include="Model\BankConfigMst.cs" />
+    <Compile Include="Model\connstring.cs" />
+    <Compile Include="Model\mainmenu.cs" />
+    <Compile Include="Model\p_report_param.cs" />
+    <Compile Include="Model\screenlist.cs" />
+    <Compile Include="Model\submenu.cs" />
+    <Compile Include="Model\tt_cash_account.cs" />
+    <Compile Include="Model\tt_cash_cum_trial.cs" />
+    <Compile Include="Model\tt_day_scroll.cs" />
+    <Compile Include="Model\tt_gl_trans.cs" />
+    <Compile Include="Model\tt_trial_balance.cs" />
+    <Compile Include="Model\t_voucher_dtls.cs" />
+    <Compile Include="Model\t_voucher_narration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReportDataSet\RDLCReportdataset.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RDLCReportdataset.xsd</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Site.Mobile.Master.cs">
+      <DependentUpon>Site.Mobile.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site.Mobile.Master.designer.cs">
+      <DependentUpon>Site.Mobile.Master</DependentUpon>
+    </Compile>
+    <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="Util\Extension.cs" />
+    <Compile Include="ViewSwitcher.ascx.cs">
+      <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewSwitcher.ascx.designer.cs">
+      <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm\Fin\cashaccount.aspx.cs">
+      <DependentUpon>cashaccount.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="WebForm\Fin\cashaccount.aspx.designer.cs">
+      <DependentUpon>cashaccount.aspx</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="WebForm\Fin\dayscrollbook.aspx.cs">
+      <DependentUpon>dayscrollbook.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="WebForm\Fin\dayscrollbook.aspx.designer.cs">
+      <DependentUpon>dayscrollbook.aspx</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="WebForm\Fin\generalledger.aspx.cs">
+      <DependentUpon>generalledger.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="WebForm\Fin\generalledger.aspx.designer.cs">
+      <DependentUpon>generalledger.aspx</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="WebForm\Fin\generalledgerdtls.aspx.cs">
+      <DependentUpon>generalledgerdtls.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="WebForm\Fin\generalledgerdtls.aspx.designer.cs">
+      <DependentUpon>generalledgerdtls.aspx</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="WebForm\Fin\profitandloss.aspx.cs">
+      <DependentUpon>profitandloss.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm\Fin\profitandloss.aspx.designer.cs">
+      <DependentUpon>profitandloss.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm\Fin\tradingac.aspx.cs">
+      <DependentUpon>tradingac.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm\Fin\tradingac.aspx.designer.cs">
+      <DependentUpon>tradingac.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm\Fin\trialbalance.aspx.cs">
+      <DependentUpon>trialbalance.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="WebForm\Fin\trialbalance.aspx.designer.cs">
+      <DependentUpon>trialbalance.aspx</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="WebForm\Loan\defaultlistloan.aspx.cs">
+      <DependentUpon>defaultlistloan.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm\Loan\defaultlistloan.aspx.designer.cs">
+      <DependentUpon>defaultlistloan.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm\Loan\detailedlistforloan.aspx.cs">
+      <DependentUpon>detailedlistforloan.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm\Loan\detailedlistforloan.aspx.designer.cs">
+      <DependentUpon>detailedlistforloan.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm\Loan\loandisbursement.aspx.cs">
+      <DependentUpon>loandisbursement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm\Loan\loandisbursement.aspx.designer.cs">
+      <DependentUpon>loandisbursement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm\Loan\loanrecoveryregister.aspx.cs">
+      <DependentUpon>loanrecoveryregister.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm\Loan\loanrecoveryregister.aspx.designer.cs">
+      <DependentUpon>loanrecoveryregister.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm\Loan\loanstatement.aspx.cs">
+      <DependentUpon>loanstatement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm\Loan\loanstatement.aspx.designer.cs">
+      <DependentUpon>loanstatement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm\Loan\loansubcashbook.aspx.cs">
+      <DependentUpon>loansubcashbook.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm\Loan\loansubcashbook.aspx.designer.cs">
+      <DependentUpon>loansubcashbook.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm\Loan\TestWebForm.aspx.cs">
+      <DependentUpon>TestWebForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm\Loan\TestWebForm.aspx.designer.cs">
+      <DependentUpon>TestWebForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm\Loan\XYZWebForm.aspx.cs">
+      <DependentUpon>XYZWebForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm\Loan\XYZWebForm.aspx.designer.cs">
+      <DependentUpon>XYZWebForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm\UCIC\memberdetails.aspx.cs">
+      <DependentUpon>memberdetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="WebForm\UCIC\memberdetails.aspx.designer.cs">
+      <DependentUpon>memberdetails.aspx</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="WebForm\UCIC\NetWorth.aspx.cs">
+      <DependentUpon>NetWorth.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="WebForm\UCIC\NetWorth.aspx.designer.cs">
+      <DependentUpon>NetWorth.aspx</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Constant\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Reports\Fin\DayBook.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Reports\Fin\cashaccount.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\Fin\cashcumtrail.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\Fin\generalledger.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\Fin\trialbalance.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Reports\Fin\generalledgerdtls.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Reports\Fin\dayscrollbook.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Reports\UCIC\memberdetails.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Reports\UCIC\networth.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Reports\Deposit\depositsubcashbook.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Reports\Deposit\asfixed.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\Deposit\dlfixed.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\Deposit\asrecurring.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\Deposit\dlrecurring.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\Deposit\assavings.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\Deposit\dlsavings.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Reports\Deposit\opencloseregister.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Reports\Deposit\nearmatdetails.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Reports\Deposit\neftoutwardpay.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Reports\Loan\detailedlistforloan.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\Loan\loandisbursement.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\Loan\loanrecoveryregister.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\Loan\loanstatement.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\Loan\loansubcashbook.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Reports\Deposit\neftinward.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\Deposit\passbookprint.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Reports\Deposit\ActiveStandingInstr.rdlc" />
+    <EmbeddedResource Include="Reports\Deposit\StandingInstrExe.rdlc" />
+    <EmbeddedResource Include="Reports\Fin\balancesheet.rdlc" />
+    <EmbeddedResource Include="Reports\Fin\profitandloss.rdlc" />
+    <EmbeddedResource Include="Reports\Fin\tradingac.rdlc" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>63011</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:63011/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
